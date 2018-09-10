@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import './registration-page.css';
+
 
 import RegistrationForm from './registration-form';
 

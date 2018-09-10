@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import './landing-page.css';
+
 
 import LoginForm from './login-form';
 
@@ -12,7 +14,7 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
-            <h2>Welcome to Foo App</h2>
+            <h2>Learn Spanish with Aprender! Write the correct english translation for each word. The more one is answered correctly, the less it will return. The more one is answered incorrectly, the more it will return.  </h2>
             <LoginForm />
             <Link to="/register">Register</Link>
         </div>
