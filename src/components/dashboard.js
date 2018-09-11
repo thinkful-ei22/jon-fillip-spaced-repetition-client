@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
+import GuessForm from './guessForm';
 import './dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -20,6 +21,7 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
+                < GuessForm />
             </div>
         );
     }
