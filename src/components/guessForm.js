@@ -11,14 +11,6 @@ export class GuessForm extends React.Component {
     this.props.dispatch(getQuestions());
   }
 
-  // method() {
-  //   if  (this.props.currQuestion === null || this.props.currQuestion === undefined) {
-  //     return <h1>Loading</h1>;
-  //   } else {
-  //     return <h1>{this.props.currQuestion.question}</h1>;
-  //   }
-  // }
-
   render() {
     console.log('PROPS', this.props);
     return (
