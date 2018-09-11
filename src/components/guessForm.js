@@ -9,7 +9,8 @@ import './guessForm.css';
 export class GuessForm extends React.Component {
 
   state = {
-    response: null
+    response: null,
+    streak: 0
   }
 
 
@@ -33,11 +34,13 @@ export class GuessForm extends React.Component {
     console.log(e.target.answer.value);
     if (answer === e.target.answer.value.toLowerCase()) {
       this.setState({
-        response: 'Answer is correct'
+        response: 'Answer is correct',
+        streak: this.state.streak + 1
       })
     } else {
       this.setState({
-        response: `Answer is wrong. Correct response was ${answer}`
+        response: `Answer is wrong. Correct response was ${answer}`,
+        streak: 0
       })
     }
     e.target.answer.value = '';
@@ -50,15 +53,12 @@ export class GuessForm extends React.Component {
     this.props.dispatch(getQuestions());
   }
   
-
-
-
-
   render() {
     console.log('PROPS', this.props);
     return (
       <div className = "form-container">
         <div className = "guess-question">
+          <h3>Your current streak is: {this.state.streak}</h3>
           <h1>{(!this.props.currQuestion) ? 'Loading' : this.props.currQuestion.question } </h1>
           <form onSubmit={e => this.handleSubmit(e)}>
             <input type = "text" name="answer" id="answer"/>
