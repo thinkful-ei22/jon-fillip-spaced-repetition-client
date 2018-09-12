@@ -21,9 +21,28 @@ export const questionError = (err) => ({
   err
 });
 
-export const getQuestions = () => dispatch => {
+export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
+export const submitRequest = () => ({
+  type: SUBMIT_REQUEST
+});
+
+
+export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
+export const submitSuccess = () => ({
+  type: SUBMIT_SUCCESS
+});
+
+export const SUBMIT_ERROR = 'SUBMIT_ERROR';
+export const submitError = (err) => ({
+  type: SUBMIT_ERROR,
+  err
+});
+
+
+
+export const getQuestions = (username) => dispatch => {
   dispatch(questionRequest());
-  return fetch (`${API_BASE_URL}/questions`)
+  return fetch (`${API_BASE_URL}/questions/${username}`)
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then((res) => {
@@ -31,5 +50,24 @@ export const getQuestions = () => dispatch => {
     })
     .catch(err => {
       dispatch(questionError(err));
+    });
+};
+
+export const submitAnswer = (result, username) => dispatch => {
+  console.log('Submit answer is running');
+  dispatch(submitRequest());
+  
+  return fetch (`${API_BASE_URL}/questions`, {
+    method: 'PUT',
+    headers: {
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify({result, username})
+  })
+    .then(() => {
+      dispatch(submitSuccess());
+    })
+    .catch(err => {
+      dispatch(submitError(err));
     });
 };

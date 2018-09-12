@@ -1,10 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getQuestions} from '../actions/questions';
+import {getQuestions, submitAnswer} from '../actions/questions';
 
 import './guessForm.css';
-
-//{ question: 'Hola', answer: 'hello' }
 
 export class GuessForm extends React.Component {
 
@@ -15,7 +13,7 @@ export class GuessForm extends React.Component {
 
 
   componentDidMount() {
-    this.props.dispatch(getQuestions());
+    this.props.dispatch(getQuestions(this.props.username));
   }
 
   // method() {
@@ -28,11 +26,13 @@ export class GuessForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const question = this.props.currQuestion.question;
+    // const question = this.props.currQuestion.question;
     const answer = this.props.currQuestion.answer;
+    let result = false;
     // console.log('handle submit running');
     console.log(e.target.answer.value);
     if (answer === e.target.answer.value.toLowerCase()) {
+      result = true;
       this.setState({
         response: 'Answer is correct',
         streak: this.state.streak + 1
@@ -44,13 +44,14 @@ export class GuessForm extends React.Component {
       })
     }
     e.target.answer.value = '';
+    this.props.dispatch(submitAnswer(result, this.props.username));
   }
 
   handleNext() {
     this.setState({
       response: ""
     })
-    this.props.dispatch(getQuestions());
+    this.props.dispatch(getQuestions(this.props.username));
   }
   
   render() {
@@ -75,8 +76,8 @@ export class GuessForm extends React.Component {
 }
 
 const mapStateToProps = state => {
-  
   return {
+    username: state.auth.currentUser.username,
     currQuestion: state.questions.currQuestion
   };
 };
