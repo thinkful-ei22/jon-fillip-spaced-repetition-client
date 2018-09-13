@@ -28,8 +28,10 @@ export const submitRequest = () => ({
 
 
 export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
-export const submitSuccess = () => ({
-  type: SUBMIT_SUCCESS
+export const submitSuccess = (totalCorrect, overallTotal) => ({
+  type: SUBMIT_SUCCESS,
+  totalCorrect,
+  overallTotal
 });
 
 export const SUBMIT_ERROR = 'SUBMIT_ERROR';
@@ -64,8 +66,12 @@ export const submitAnswer = (result, username, correct, total) => dispatch => {
     },
     body: JSON.stringify({result, username, correct, total})
   })
-    .then(() => {
-      dispatch(submitSuccess());
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then((res) => {
+      const totalCorrect = res.correct;
+      const overallTotal = res.total;
+      dispatch(submitSuccess(totalCorrect, overallTotal));
     })
     .catch(err => {
       dispatch(submitError(err));

@@ -19,21 +19,11 @@ export class GuessForm extends React.Component {
     this.props.dispatch(getQuestions(this.props.username));
   }
 
-  // method() {
-  //   if  (this.props.currQuestion === null || this.props.currQuestion === undefined) {
-  //     return <h1>Loading</h1>;
-  //   } else {
-  //     return <h1>{this.props.currQuestion.question}</h1>;
-  //   }
-  // }
 
   handleSubmit(e) {
     e.preventDefault();
-    // const question = this.props.currQuestion.question;
     const answer = this.props.currQuestion.answer;
     let result = false;
-    // console.log('handle submit running');
-    console.log(e.target.answer.value);
     if (answer === e.target.answer.value.toLowerCase()) {
       result = true;
       this.setState({
@@ -62,7 +52,6 @@ export class GuessForm extends React.Component {
   }
   
   render() {
-    console.log('PROPS', this.props);
     return (
       <div className = "form-container">
         <div className = "guess-question">
@@ -79,7 +68,7 @@ export class GuessForm extends React.Component {
           </span>
         </div>
           <Popup trigger={<button>Progress</button>} position="right center">
-            <div>Progress content</div>
+            <div>You overall progress is: {this.props.totalCorrect}/{this.props.overallTotal}</div>
           </Popup>
       </div>
     );
@@ -89,7 +78,9 @@ export class GuessForm extends React.Component {
 const mapStateToProps = state => {
   return {
     username: state.auth.currentUser.username,
-    currQuestion: state.questions.currQuestion
+    currQuestion: state.questions.currQuestion,
+    totalCorrect: state.questions.totalCorrect,
+    overallTotal: state.questions.overallTotal
   };
 };
 
