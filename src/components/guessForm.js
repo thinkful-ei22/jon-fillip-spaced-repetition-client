@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getQuestions, submitAnswer} from '../actions/questions';
+import Popup from "reactjs-popup";
 
 import './guessForm.css';
 
@@ -8,7 +9,9 @@ export class GuessForm extends React.Component {
 
   state = {
     response: null,
-    streak: 0
+    streak: 0,
+    total: 0,
+    correct: 0
   }
 
 
@@ -35,16 +38,20 @@ export class GuessForm extends React.Component {
       result = true;
       this.setState({
         response: 'Answer is correct',
-        streak: this.state.streak + 1
+        streak: this.state.streak + 1,
+        correct: this.state.correct + 1,
+        total: this.state.total + 1
+
       })
     } else {
       this.setState({
         response: `Answer is wrong. Correct response was ${answer}`,
-        streak: 0
+        streak: 0,
+        total: this.state.total + 1
       })
     }
     e.target.answer.value = '';
-    this.props.dispatch(submitAnswer(result, this.props.username));
+    this.props.dispatch(submitAnswer(result, this.props.username, this.state.correct + 1, this.state.total + 1));
   }
 
   handleNext() {
@@ -59,7 +66,8 @@ export class GuessForm extends React.Component {
     return (
       <div className = "form-container">
         <div className = "guess-question">
-          <h3>Your current streak is: {this.state.streak}</h3>
+          <h2 className="streak">You have gotten: {this.state.correct} / {this.state.total} correct</h2>
+          <h3 className="streak">Your current streak is: {this.state.streak}</h3>
           <h1>{(!this.props.currQuestion) ? 'Loading' : this.props.currQuestion.question } </h1>
           <form onSubmit={e => this.handleSubmit(e)}>
             <input type = "text" name="answer" id="answer"/>
@@ -70,6 +78,9 @@ export class GuessForm extends React.Component {
             {this.state.response}
           </span>
         </div>
+          <Popup trigger={<button>Progress</button>} position="right center">
+            <div>Progress content</div>
+          </Popup>
       </div>
     );
   }

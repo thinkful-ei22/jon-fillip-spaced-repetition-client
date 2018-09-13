@@ -53,7 +53,7 @@ export const getQuestions = (username) => dispatch => {
     });
 };
 
-export const submitAnswer = (result, username) => dispatch => {
+export const submitAnswer = (result, username, correct, total) => dispatch => {
   console.log('Submit answer is running');
   dispatch(submitRequest());
   
@@ -62,7 +62,7 @@ export const submitAnswer = (result, username) => dispatch => {
     headers: {
       'content-type' : 'application/json'
     },
-    body: JSON.stringify({result, username})
+    body: JSON.stringify({result, username, correct, total})
   })
     .then(() => {
       dispatch(submitSuccess());
