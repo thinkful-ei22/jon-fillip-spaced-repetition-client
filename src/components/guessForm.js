@@ -68,7 +68,8 @@ export class GuessForm extends React.Component {
           </span>
         </div>
           <Popup trigger={<button>Progress</button>} position="right center">
-            <div>You overall progress is: {this.props.totalCorrect}/{this.props.overallTotal}</div>
+            <div>You overall progress is: {this.props.totalCorrect}/{this.props.overallTotal}.
+            You are {Math.floor(this.props.totalCorrect/this.props.overallTotal*100)}% accurate.</div>
           </Popup>
       </div>
     );

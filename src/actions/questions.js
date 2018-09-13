@@ -40,6 +40,23 @@ export const submitError = (err) => ({
   err
 });
 
+export const UPDATE_REQUEST = 'UPDATE_REQUEST';
+export const updateRequest = () => ({
+  type: UPDATE_REQUEST
+});
+
+
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const updateSuccess = () => ({
+  type: UPDATE_SUCCESS
+});
+
+export const UPDATE_ERROR = 'UPDATE_ERROR';
+export const updateError = (err) => ({
+  type: UPDATE_ERROR,
+  err
+});
+
 
 
 export const getQuestions = (username) => dispatch => {
@@ -56,7 +73,6 @@ export const getQuestions = (username) => dispatch => {
 };
 
 export const submitAnswer = (result, username, correct, total) => dispatch => {
-  console.log('Submit answer is running');
   dispatch(submitRequest());
   
   return fetch (`${API_BASE_URL}/questions`, {
@@ -72,6 +88,24 @@ export const submitAnswer = (result, username, correct, total) => dispatch => {
       const totalCorrect = res.correct;
       const overallTotal = res.total;
       dispatch(submitSuccess(totalCorrect, overallTotal));
+    })
+    .catch(err => {
+      dispatch(submitError(err));
+    });
+};
+
+export const updateDatabase = () => (dispatch, getState) => {
+  dispatch(updateRequest());
+  const username = getState().auth.currentUser.username;
+  return fetch (`${API_BASE_URL}/questions/update`, {
+    method: 'PUT',
+    headers: {
+      'content-type' : 'application/json'
+    },
+    body: JSON.stringify({username})
+  })
+    .then(() => {
+      dispatch(updateSuccess());
     })
     .catch(err => {
       dispatch(submitError(err));

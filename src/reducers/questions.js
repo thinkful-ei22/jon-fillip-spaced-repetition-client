@@ -4,7 +4,10 @@ import {
   QUESTION_ERROR,
   SUBMIT_REQUEST,
   SUBMIT_SUCCESS,
-  SUBMIT_ERROR
+  SUBMIT_ERROR,
+  UPDATE_REQUEST,
+  UPDATE_SUCCESS,
+  UPDATE_ERROR
 } 
   from '../actions/questions'; 
 
@@ -18,15 +21,12 @@ const initialState = {
 
 export default function questionReducer(state = initialState, action) {
   if (action.type === QUESTION_REQUEST) {
-    console.log('request being made');
     return Object.assign({}, state, {
       loading: true,
       error:null
     });
   }
   else if (action.type === QUESTION_SUCCESS) {
-    console.log('fetch question success');
-    console.log('action in reducers', action.currQuestion);
     return Object.assign({}, state, {
       currQuestion: action.currQuestion,
       loading: false,
@@ -34,22 +34,18 @@ export default function questionReducer(state = initialState, action) {
     });
   }
   else if (action.type === QUESTION_ERROR) {
-    console.log('Error with request');
     return Object.assign({}, state, {
       loading: false,
       error: action.err
     });
   }
   else if (action.type === SUBMIT_REQUEST) {
-    console.log('submit request being made');
     return Object.assign({}, state, {
       loading: true,
       error:null
     });
   }
   else if (action.type === SUBMIT_SUCCESS) {
-    console.log('fetch submit question success');
-    //console.log('action in reducers', action.currQuestion);
     return Object.assign({}, state, {
       totalCorrect: action.totalCorrect,
       overallTotal: action.overallTotal,
@@ -58,11 +54,29 @@ export default function questionReducer(state = initialState, action) {
     });
   }
   else if (action.type === SUBMIT_ERROR) {
-    console.log('submit Error with request');
     return Object.assign({}, state, {
       loading: false,
       error: action.err
     });
   }
+  else if (action.type === UPDATE_REQUEST) {
+    return Object.assign({}, state, {
+      loading: true,
+      error:null
+    });
+  }
+  else if (action.type === UPDATE_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: null
+    });
+  }
+  else if (action.type === UPDATE_ERROR) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.err
+    });
+  }
+
   return state;
 }
