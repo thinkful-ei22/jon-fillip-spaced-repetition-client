@@ -117,7 +117,7 @@ export class GuessForm extends React.Component {
             <h3 className="streak">Your current streak is: {this.state.streak}</h3>
             <h1 className = "question-word">{(!this.props.currQuestion) ? 'Loading' : this.props.currQuestion.question } </h1>
             <form onSubmit={e => this.handleSubmit(e)}>
-              <input type = "text" name="answer" id="answer"/><br/>
+              <input type = "text" name="answer" id="answer" autocomplete="off"/><br/>
               <input type ="submit" id="sub-button" className="button" value="Submit Answer" disabled={this.state.response}/>
               <input type ="button" id="next-button" className="button" value="Next" disabled={!this.state.response} onClick={() => this.handleNext()}/>
             </form>
