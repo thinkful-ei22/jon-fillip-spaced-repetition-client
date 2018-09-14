@@ -16,19 +16,13 @@ The backend can be found here: https://github.com/thinkful-ei22/jon-filipp-space
     Password: password
 
 ##  Screenshots
-### *The home page, where users can search for and browse other events:
-<img width="400" height="200" alt="ss1" src="https://user-images.githubusercontent.com/38267761/44282505-1e84db80-a210-11e8-8992-9a9b9fa641b7.png">       <img width="400" alt="ss1 5" src="https://user-images.githubusercontent.com/38267761/44282509-22186280-a210-11e8-8930-5dccc6710348.png">
+### *The landing page, where users can login or register for a new account.
+
+<img width="1440" alt="screen shot 2018-09-14 at 1 05 44 pm" src="https://user-images.githubusercontent.com/38267761/45572810-48391e80-b81f-11e8-99a5-847c6eafbc0d.png">
 
 
-###  *Sign-up/Login page:
-<img width="400" alt="ss2" src="https://user-images.githubusercontent.com/38267761/44282518-26dd1680-a210-11e8-9d53-644e903d2187.png"> <img width="400" alt="ss3" src="https://user-images.githubusercontent.com/38267761/44282520-26dd1680-a210-11e8-987e-86270cca636b.png">
-
-
-### *A page where registered users can create their events:
-<img width="600" alt="ss4" src="https://user-images.githubusercontent.com/38267761/44282517-26dd1680-a210-11e8-9315-273d7ebd8b32.png">
-
-### *A page to show the details of an event:
-<img width="600" alt="ss5" src="https://user-images.githubusercontent.com/38267761/44282524-280e4380-a210-11e8-8d15-d26205bff743.png">
+### *The main page where users will answer questions:
+<img width="1440" alt="screen shot 2018-09-14 at 1 05 44 pm" src="https://user-images.githubusercontent.com/38267761/45572810-48391e80-b81f-11e8-99a5-847c6eafbc0d.png">
 
 
 ## Tech Stack
@@ -41,17 +35,3 @@ React, Redux, JWT-Decode
 
 *Back-end*:
 Express, Node, Passport, Dotenv, BcryptJs
-
-## Key Parts
-
-This app has many components, but the main ones consist of: **App**, **Sign-up (or Login)**, **EventCreator** , and **EventList**.
-
-All of the components live in the src/components/<name of component> directory.
-
-_App_: The job of the App component is to handle the routes for the components, as well as mount the get/events data upon loading.
-
-_Sign-up/Login_: The sign-up and login components handle the input of the users. 
-
-_EventCreator_: The EventCreator component is responsible for creating events and sending data to the post endpoint. 
-
-_EventList_: Lastly, the EventList component is responsible for fetching, as well as searching for, data to display.
