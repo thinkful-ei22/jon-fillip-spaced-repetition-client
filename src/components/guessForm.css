@@ -1,7 +1,45 @@
 .form-container {
-  border: 1px solid black;
-  height: 300px;
+  border: 8px solid black;
+  height: 450px;
   width: 80%;
   margin: 0 auto;
   text-align: center;
+  margin-top: 30px;
+}
+
+#answer {
+  border-radius: 3px;
+  width: 45%;
+  padding: 9px 12px;
+  border: 1px #D2D6DF solid;
+  background: #fff;
+  color: #45494E;
+  font-size: 16px;
+  line-height: 12px;
+  font-weight: 150;
+  letter-spacing: .5px; 
+  text-align: center;
+}
+
+.guess-question {
+  color: #d5eeff;
+}
+.question-word {
+  font-family: 'Sofia', cursive;
+  color: #51e2ff;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.button {
+  background-color: #182952;
+  color: white;
+  padding: 15px 32px;
+  font-size: 12px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+#sub-button, #next-button {
+  margin-top: 10px;
 }

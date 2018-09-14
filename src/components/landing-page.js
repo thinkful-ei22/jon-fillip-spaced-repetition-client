@@ -13,12 +13,14 @@ export function LandingPage(props) {
   }
 
   return (
-    <div className="home">
-      <h2>Learn Spanish with Aprender! Write the correct english translation for each word. The more one is answered correctly, the less it will return. The more one is answered incorrectly, the more it will return.  </h2>
-      <LoginForm />
-      <Link to="/register">Register</Link>
+    <div>
+      <h2 className ="title">Welcome to iLearn! Register or Login to begin your journey.</h2>
+      <div className="home">
+        <LoginForm />
+        <Link to="/register">Register</Link>
+      </div>
     </div>
-  );
+    );
 }
 
 const mapStateToProps = state => ({

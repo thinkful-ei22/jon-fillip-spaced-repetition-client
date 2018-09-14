@@ -1,0 +1,20 @@
+.header-bar {
+  background-color: #494949;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-bar h1 {
+  margin: 0px;
+  color: #fffdf6;
+  font-family: 'Bungee Inline', cursive;
+}
+
+.logout-button {
+  background-color: #494949;
+  font-size: 16px;
+  border: none;
+  color: #fffdf6;
+  cursor: pointer;
+}
