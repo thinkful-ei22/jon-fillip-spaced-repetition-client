@@ -33,6 +33,7 @@ export class LoginForm extends React.Component {
           type="text"
           name="username"
           id="username"
+          aria-label="Enter username"
           validate={[required, nonEmpty]}
         />
         <label htmlFor="password">Password</label>
@@ -41,6 +42,7 @@ export class LoginForm extends React.Component {
           type="password"
           name="password"
           id="password"
+          aria-label="Enter password"
           validate={[required, nonEmpty]}
         />
         <button disabled={this.props.pristine || this.props.submitting}>
