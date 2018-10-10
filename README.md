@@ -1,9 +1,9 @@
 ## iLearn
-Want to learn Spanish? This application allows users to track their progress and master Spanish vocabulary. 
+Want to learn Spanish? Taking advantage of spaced repetition, a user will continue to see the same questions spaced according to their correct or incorrect responses. This creates an efficient method of learning new words quickly. This application allows users to track their progress and master Spanish vocabulary. 
 
 ## Description
 
-This is a simple app that uses spaced repetition to improve learning. Users can create their own accounts and begin tracking their progress. 
+This is a simple app that uses spaced repetition to improve learning. Users can create their own accounts and begin tracking their progress. As of now, there are only ten vocabulary words that users will continue to see as they progress through their learning. Eventually, more words will be added, with a feature that will allow users to input new words of their choosing. Other languages are soon to be implemented as well.
 
 ## Link to Application
 
@@ -31,7 +31,7 @@ The backend can be found here: https://github.com/thinkful-ei22/jon-filipp-space
 This app was created using React for the front-end, and Node for the back-end.
 
 *Front-end*: 
-React, Redux, JWT-Decode
+CSS, React, Redux, JWT-Decode
 
 
 *Back-end*:
