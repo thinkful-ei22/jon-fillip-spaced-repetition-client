@@ -36,3 +36,13 @@ React, Redux, JWT-Decode
 
 *Back-end*:
 Express, Node, Passport, Dotenv, BcryptJs
+
+## Key Parts
+
+This app has a few key components, but the main ones are the **Landing Page** and **Guess Form** components.
+
+All of the components live in the src/components/<name of component> directory.
+
+_Landing Page_: The job of the landing page component is to handle the the registration and login for new and returning users. As the first page that users see, it it straighforward and uncomplicated. 
+
+_Guess Form_: The guess form component handles all the main functionality of this web application. It is responsible for keeping track of the streak and count and storing it in the local state. This component is also where the API calls are dispatched, grabbing the questions and submitting user responses. More features will soon be added.
